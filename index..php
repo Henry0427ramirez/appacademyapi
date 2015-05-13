@@ -9,9 +9,19 @@ define{'clientID', '82db6747d1fd4a97950ce2329c23299f'};
 define{'clientSecret', '310890515b3c4eed8aaeabd40dafdbf6'};
 define{'redirectURI', 'http://localhost/appacademy-api/index.php'};
 define{'ImageDirectory', 'pics/'};
+
+if isset(($_GET['code'])){
+ $code = ($_GET['code']);
+ $url = 'https://api.instagram.com/oauth/access_token';
+ $access_token_settings = array('client_id' -> clientID,
+ 								'client_secret' => clientSecret,
+ 								'grant_type' => 'authorization_code',
+ 								'redirect_uri' => redirectURI,
+ 								'code' => $code
+ 								);
+}
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
