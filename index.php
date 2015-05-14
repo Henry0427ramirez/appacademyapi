@@ -13,7 +13,7 @@ define{'ImageDirectory', 'pics/'};
 if isset(($_GET['code'])){
  $code = ($_GET['code']);
  $url = 'https://api.instagram.com/oauth/access_token';
- $access_token_settings = array('client_id' -> clientID,
+ $access_token_settings = array('client_id' => clientID,
  								'client_secret' => clientSecret,
  								'grant_type' => 'authorization_code',
  								'redirect_uri' => redirectURI,
@@ -22,6 +22,16 @@ if isset(($_GET['code'])){
 }
 
 ?>
+
+<!--
+
+CLIENT INFO
+CLIENT ID	82db6747d1fd4a97950ce2329c23299f
+CLIENT SECRET	310890515b3c4eed8aaeabd40dafdbf6
+WEBSITE URL	http://localhost/appacademy-api/index.php
+REDIRECT URI	http://localhost/appacademy-api/index.php
+
+-->
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +45,7 @@ if isset(($_GET['code'])){
 </head>
 <body>
 <!-- Creating a lgoin for people to go and give approval for our web app to access their Instagram account after getting approval we are now going to hae the information so that we can play with it. -->
-	<a href="https:api.instagram/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI;?>&response_type=code">LOGIN</a>
+	<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI;?>&response_type=code">LOGIN</a>
 	<script src="js/main.js"></script>
 </body>
 </html>
