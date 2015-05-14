@@ -5,12 +5,12 @@ ini_set('default_socket_timeout', 300);
 session_start();
 
 //make constant using define
-define{'clientID', '82db6747d1fd4a97950ce2329c23299f'};
-define{'clientSecret', '310890515b3c4eed8aaeabd40dafdbf6'};
-define{'redirectURI', 'http://localhost/appacademy-api/index.php'};
-define{'ImageDirectory', 'pics/'};
+define('clientID', '82db6747d1fd4a97950ce2329c23299f');
+define('clientSecret', '310890515b3c4eed8aaeabd40dafdbf6');
+define('redirectURI', 'http://localhost/appacademy-api/index.php');
+define('ImageDirectory', 'pics/');
 
-if isset(($_GET['code'])){
+if (isset($_GET['code'])){
  $code = ($_GET['code']);
  $url = 'https://api.instagram.com/oauth/access_token';
  $access_token_settings = array('client_id' => clientID,
@@ -19,6 +19,12 @@ if isset(($_GET['code'])){
  								'redirect_uri' => redirectURI,
  								'code' => $code
  								);
+ //curl is what you use in php.its 
+ $curl = carl_init($url);//setting a curl seesion and we put in curl because thats where we are gettting the data from
+ curl_setopt($curl, CURLOPT_POST, true);
+ curl_setopt($curl, CURLOPT_POSTFIELD, $access_token_settings);//setting the POSTFIELDS to the array setup that we created
+ curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);  
 }
 
 ?>
