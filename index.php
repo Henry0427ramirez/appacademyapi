@@ -33,6 +33,20 @@ function getUserID($userName){
 	return $results['data']['0']['id'];
 }
 
+//Function to print images onto screen
+function printImages($userID){
+	$url = 'https://api.instagram.com/v1/users/'.$userID.'/media/recent?client_id='.clientID.'&count=5'; //Requests last 5 pics
+	$instagramInfo = connectToInstagram($url); //Connecting to Instagram
+	$results = json_decode($instagramInfo, true); //Creating a local variable to decode json information
+	//Parse through the information one by one
+	foreach ($results['data'] as $items) {
+		$image_url = $items['images']['low_resolution']['url']; //Going to go through all of my results and give myself back the URL of those pictures because we want to save it in the PHP server
+		echo '<img src=" '.$image_url.'"/><br/>';
+		//Calling a function to save the $image_url
+		savePictures($image_url);
+	}
+}
+
 if (isset($_GET['code'])){
  $code = ($_GET['code']);
  $url = 'https://api.instagram.com/oauth/access_token';
