@@ -70,20 +70,21 @@ if (isset($_GET['code'])){
  curl_setopt($curl, CURLOPT_POST, true);
  curl_setopt($curl, CURLOPT_POSTFIELD, $access_token_settings);//setting the POSTFIELDS to the array setup that we created
  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
- curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);  
+ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+$result = curl_exec($curl); //Stores all the above information in this variable
+curl_close($curl);
+$results = json_decode($result, true);
+$userName = $results['user']['username'];
+$userID = getUserID($userName);
+printImages($userID);   
+
 }
 
+
+
+
 ?>
-
-<!--
-
-CLIENT INFO
-CLIENT ID	82db6747d1fd4a97950ce2329c23299f
-CLIENT SECRET	310890515b3c4eed8aaeabd40dafdbf6
-WEBSITE URL	http://localhost/appacademy-api/index.php
-REDIRECT URI	http://localhost/appacademy-api/index.php
-
--->
 
 <!DOCTYPE html>
 <html>
