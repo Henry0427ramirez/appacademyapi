@@ -80,10 +80,7 @@ $userID = getUserID($userName);
 printImages($userID);   
 
 }
-
-
-
-
+else{
 ?>
 
 <!DOCTYPE html>
@@ -102,3 +99,6 @@ printImages($userID);
 	<script src="js/main.js"></script>
 </body>
 </html>
+<?php 
+}
+?>
