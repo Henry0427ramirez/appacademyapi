@@ -30,6 +30,7 @@ function getUserID($userName){
 	$url = 'https://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID; //The s indicates a secure connection
 	$instagramInfo = connectToInstagram($url);
 	$results = json_decode($instagramInfo, true);
+	//parse through informat one bt one
 	return $results['data']['0']['id'];
 }
 
@@ -49,7 +50,7 @@ function printImages($userID){
 //Saves pics to folder
 function savePictures($image_url){
 	echo $image_url.'<br>'; 
-	$filename = basename($image_url); //The filename is what we are storing. Basename is the built in PHP method we are using to store $image_url
+	$filename = basename($image_url); //The filename is what is being stored.Basename is the built in PHP method we are using to store $image_url
 	echo $filename.'<br>';
 	$destination = ImageDirectory . $filename; //Making sure the image doesn't exist in the storage
 	file_put_contents($destination, file_get_contents($image_url)); //Grabs image file and stores it in our server
@@ -66,11 +67,11 @@ if (isset($_GET['code'])){
  								'code' => $code
  								);
  //curl is what you use in php.its 
- $curl = carl_init($url);//setting a curl seesion and we put in curl because thats where we are gettting the data from
+ $curl = curl_init($url);//setting a curl session and we put in curl because thats where we are gettting the data from
  curl_setopt($curl, CURLOPT_POST, true);
- curl_setopt($curl, CURLOPT_POSTFIELD, $access_token_settings);//setting the POSTFIELDS to the array setup that we created
- curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
- curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+ curl_setopt($curl, CURLOPT_POSTFIELDS, $access_token_settings);//setting the POSTFIELDS to the array setup that we created
+ curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//setting it equal to 1 because we are getting strings back.
+ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//but in live work production we want to set this to true
 
 $result = curl_exec($curl); //Stores all the above information in this variable
 curl_close($curl);
