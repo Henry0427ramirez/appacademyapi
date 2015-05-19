@@ -87,8 +87,10 @@ else{
 	<meta charset="utf-8">
 	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale1.0">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="author" href="human.txt">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="author" href="human.txt">
 </head>
 <body>
       <a href="http://localhost/appacademyapi/index.php">HOME</a>
@@ -96,7 +98,9 @@ else{
 <!-- creating a link to instagram through oauth/authorizing the account. -->
 <!-- after setting client_id to blank in the beginning , along with redirect_uri then you have to echo it out from the constants. -->
  <a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
-		<script type="js/main.js"></script>
+ 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"> </script>
+	<script type="js/main.js"></script>
 </body>
 </html>
 <?php
